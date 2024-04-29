@@ -25,7 +25,7 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Proto
   other-modules:
       Paths_proto
   autogen-modules:
@@ -39,6 +39,7 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , parser-combinators >=1.3 && <2
     , relude >=1.2.1.0 && <2
   default-language: GHC2021
 
@@ -58,6 +59,7 @@ test-suite proto-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , parser-combinators >=1.3 && <2
     , proto
     , relude >=1.2.1.0 && <2
   default-language: GHC2021
