@@ -8,7 +8,6 @@ copyright:           "2024 Peter Burtsev"
 
 extra-source-files:
 - README.md
-- CHANGELOG.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -22,14 +21,14 @@ description:         Please see the README on GitHub at <https://github.com/Lito
 language: GHC2021
 
 default-extensions:
-- NoImplicitPrelude
 - BlockArguments
 - OverloadedStrings
 
 dependencies:
 - base >= 4.7 && < 5
-- relude >= 1.2.1.0 && < 2
 - parser-combinators >= 1.3 && < 2
+- text
+- unordered-containers
 
 ghc-options:
 - -Wall
