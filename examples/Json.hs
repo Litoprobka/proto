@@ -1,5 +1,6 @@
 import Prelude hiding (null)
 import Proto
+import Proto.Text
 import Control.Monad.Combinators
 import Data.Text qualified as Text
 import Data.Text (Text)
@@ -16,7 +17,7 @@ data Json
     | Null
   deriving (Show, Eq)
 
-type Parser = Proto ()
+type Parser = Proto () Text
 
 lexeme :: Parser a -> Parser a
 lexeme p = p <* space
