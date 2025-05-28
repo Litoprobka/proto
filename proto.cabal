@@ -17,7 +17,6 @@ license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
-    CHANGELOG.md
 
 source-repository head
   type: git
@@ -25,7 +24,6 @@ source-repository head
 
 library
   exposed-modules:
-      Json
       Proto
   other-modules:
       Paths_proto
@@ -40,6 +38,25 @@ library
   build-depends:
       base >=4.7 && <5
     , parser-combinators >=1.3 && <2
+    , text
+  default-language: GHC2021
+
+executable json
+  main-is: Json.hs
+  other-modules:
+      Paths_proto
+  autogen-modules:
+      Paths_proto
+  hs-source-dirs:
+      examples
+  default-extensions:
+      BlockArguments
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , parser-combinators >=1.3 && <2
+    , proto
     , text
     , unordered-containers
   default-language: GHC2021
@@ -62,5 +79,4 @@ test-suite proto-test
     , parser-combinators >=1.3 && <2
     , proto
     , text
-    , unordered-containers
   default-language: GHC2021

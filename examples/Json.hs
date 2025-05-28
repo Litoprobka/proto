@@ -1,6 +1,3 @@
--- an example json parser
-module Json where
-
 import Prelude hiding (null)
 import Proto
 import Control.Monad.Combinators
@@ -50,4 +47,11 @@ bool :: Parser Json
 bool = Bool <$> (True <$ symbol "true" <|> False <$ symbol "false")
 
 null = Null <$ symbol "null"
+
+main :: IO ()
+main = do
+  input <- getLine
+  case parse json (Text.pack input) of
+    Right parsed -> print parsed
+    Left err -> print err
 
