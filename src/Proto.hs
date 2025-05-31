@@ -13,6 +13,7 @@ module Proto (
     anyToken,
     parse,
     error,
+    lookAhead,
 ) where
 
 import Prelude hiding (error)
@@ -119,6 +120,12 @@ anyToken :: Stream s => Proto err s (Token s)
 anyToken = Proto \s -> case take1 s of
     Just (t, s') -> Parsed s' t
     _ -> Skipped
+
+-- | run a parser without changing the stream state
+lookAhead :: Proto err s a -> Proto err s a
+lookAhead (Proto p) = Proto \s -> case p s of
+    Parsed _ x -> Parsed s x
+    other -> other
 
 parse :: Proto err s a -> s -> Either (Maybe err) a
 parse (Proto parser) input = case parser input of
